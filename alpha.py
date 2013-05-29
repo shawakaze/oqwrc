@@ -41,18 +41,19 @@ theta = thetafn(A)
 real_solution = DM(A,b)
 ###########################################################
 
+################################################################
+"""
+    Inital density matrix
+"""
+g = Qobj(b)
+g = g.unit()
+p0 = tensor(v1*v1.dag(),v0*v0.dag(),g*g.dag(),K[0]*K[0].dag())
+P = [p0]
 
 def main(w):
     l = 1-w
     exit_status = False
-    ################################################################
-    """
-    Inital density matrix
-    """
-    g = Qobj(b)
-    g = g.unit()
-    p0 = tensor(v1*v1.dag(),v0*v0.dag(),g*g.dag(),K[0]*K[0].dag())
-    P = [p0]
+
     #####################################################################
     Kf = SupForward(w,A,Y,theta)
     Kb = SupReverse(l,A,Y,theta)
