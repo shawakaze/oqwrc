@@ -12,7 +12,6 @@ def NormalizationCondition(A,B):
 def AntiCommutator(A,B):
     return A*B+B*A
 
-# not particularly in use or efficient at the moment
 def Lindblad(A,B,p):
     a = A*p*A.dag()+B*p*B.dag() - 0.5*AntiCommutator(A*A.dag()+B*B.dag(),p)
     return a

@@ -11,4 +11,3 @@ def D(K,j,i):
     d = K[i]*K[j].dag()
     return d
 
-
