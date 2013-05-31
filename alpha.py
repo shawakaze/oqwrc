@@ -17,7 +17,6 @@ rc('font', family='serif')
 
 i = csr(-1)
 K = Kspace(9)
-Y = Ygate()
 P9 = Projection(9,8)
 ##############################################################
 v0 = basis(2,0)
@@ -57,8 +56,8 @@ def main(w):
     P = [p0]
 
     #####################################################################
-    Kf = SupForward(w,A,Y,theta)
-    Kb = SupReverse(l,A,Y,theta)
+    Kf = SupForward(w,A,theta)
+    Kb = SupReverse(l,A,theta)
 
     n = 0
     while not exit_status:
@@ -107,8 +106,8 @@ def draw():
     pl.xlim(0,1)
     pl.ylim(0,1.2)
     
-    plot3, = pl.plot(x,z,'b')
-    pl.legend([plot3],['fidelity between the two solns'],'upper left')
+    plot2, = pl.plot(x,z,'b')
+    pl.legend([plot2],['fidelity between the two solns'],'upper left')
     pl.savefig("Apf1.png")
 
     pl.show()
@@ -116,7 +115,8 @@ def draw():
 
 
 
-draw()
-#main(0.98)
-print "\n\nWith theta as",theta
+#draw()
+print main(0.5)
+
+#print main(0.98),"\n\nWith theta as",theta
                   

@@ -12,18 +12,6 @@ def NormalizationCondition(A,B):
 def AntiCommutator(A,B):
     return A*B+B*A
 
-# not particularly in use or efficient at the moment
-def Lindblad(A,B,p):
-    a = A*p*A.dag()+B*p*B.dag() - 0.5*AntiCommutator(A*A.dag()+B*B.dag(),p)
-    return a
-
-def Detection(A,B,p):
-    Zero_ = tensor(Z(2),Z(2),Z(2),Z(9))
-    g = Zero_
-    for j in range(9):
-        g = g + Lindblad(A[j],B[j],p)
-    return g
-
 def Probabilityfn(A):
     a = ptrace(A,[0,1,2])
     return a.tr()
@@ -37,14 +25,3 @@ def TraceDistance(A,B):
 def Expectation(M,p):
     c = (M*p).tr()
     return c
-
-def PercError(exact,experimental):
-    E = abs(exact-experimental)/exact
-    E = E*100
-    if 0<=E<=100:
-        return E
-    else:
-        pass
-
-
-         

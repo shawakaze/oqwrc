@@ -5,15 +5,6 @@ import numpy as np
 
 i = sqrt(-1)
 
-def Xgate():
-    return sigmax()
-
-def Ygate():
-    return sigmay()
-
-def Zgate():
-    return sigmaz()
-
 def Hadamardgate():
     return (1/sqrt(2))*Qobj(matrix([[1,1],[1,-1]]))
 """
