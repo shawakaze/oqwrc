@@ -13,34 +13,25 @@ from solver import *
 from matplotlib import rc
 rc('text', usetex=True)
 rc('font', family='serif')
-##############################################################
-
+###### K space and projection operator for final state ############
 i = csr(-1)
 K = Kspace(9)
 P9 = Projection(9,8)
-##############################################################
+############ Some basis vectors ##################################
 v0 = basis(2,0)
 v1 = basis(2,1)
-##############################################################
-"""
-    The A operator
-"""
-A = (1/csr(2))*matrix([[2,0],[0,-1]])
-
+############## Input matrix A ##################################
+A = (1/csr(1))*matrix([[1,0],[0,1]])
 ###########################################################
 #  the b vector expressed in terms of the eigenvectors of A
-
 b = (1/csr(2))*array([[1],[1]])
-
 ############################################################
 ## calculation of $\theta$ #####
 theta = thetafn(A)
 
 ### real solution   #####################################
 real_solution = DM(A,b)
-###########################################################
 
-################################################################
 """
     Inital density matrix
 """
@@ -54,11 +45,8 @@ def main(w):
     l = 1-w
     exit_status = False
     P = [p0]
-
-    #####################################################################
     Kf = SupForward(w,A,theta)
     Kb = SupReverse(l,A,theta)
-
     n = 0
     while not exit_status:
         Zero_ = tensor(Z(2),Z(2),Z(2),Z(9))
@@ -67,7 +55,7 @@ def main(w):
 
         P.append(Zero_)
         n = n + 1
-        if n>10 :
+        if n>9 :
             exit_status = True
         else:
             exit_status = False
@@ -80,7 +68,7 @@ def main(w):
 def draw():
     x,y,z=[],[],[]
     delta = 0.01
-    for w in arange(0,1,delta):
+    for w in arange(0.5,1,delta):
           p = main(w)
           solution = p[0]
           l = p[1]
@@ -92,31 +80,25 @@ def draw():
     pl.title(r"Probability of detection vs $\omega$")
     pl.ylabel(r"Probability of detection at node 9, $p_9$")
     pl.xlabel(r"$\omega$ - forward propagation amplitude")
-    pl.xlim(0,1)
+    pl.xlim(0.5,1)
     pl.ylim(0,1.4)
 
     plot1, = pl.plot(x,y,'r')
     pl.legend([plot1],['Probability of detection at node 9'],'upper left')
-    pl.savefig("App1.png")
+    #pl.savefig("Probability_of_detection.png") give the file whatever name you want
 #-------------------------------------------------------------------------------
     pl.figure(2)
     pl.title(r"Fidelity (actual,oqw) vs $\omega$")
     pl.ylabel(r"Fidelity,$\mathcal{F}(actual-dm,oqw-dm)$")
     pl.xlabel(r"$\omega$ - forward propagation amplitude")
-    pl.xlim(0,1)
+    pl.xlim(0.5,1)
     pl.ylim(0,1.2)
     
     plot2, = pl.plot(x,z,'b')
     pl.legend([plot2],['fidelity between the two solns'],'upper left')
-    pl.savefig("Apf1.png")
+    #pl.savefig("fidelity_plot.png") give what ever name you want
 
     pl.show()
-
-
-
-
-#draw()
-print main(0.5)
-
-#print main(0.98),"\n\nWith theta as",theta
+###############################################################################
+draw()
                   
