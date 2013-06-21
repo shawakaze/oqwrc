@@ -14,15 +14,5 @@ from time import time
 from scipy import log
 from numpy import arange
 
-def plot1():
-    x,y,z=[],[],[]
-    for i in arange(1,3,0.01):
-        x.append(i)
-        y.append(log(i))
-        z.append(i**3)
-
-    plot1 = pl.plot(x,y,'r')
-    plot2 = pl.plot(x,z,'b')
-    pl.show()
-
-plot1()
+def test1():
+	pass
