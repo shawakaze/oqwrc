@@ -21,7 +21,7 @@ P9 = Projection(9,8)
 v0 = basis(2,0)
 v1 = basis(2,1)
 ############## Input matrix A ##################################
-A = (1/csr(1))*matrix([[1,0],[0,1]])
+A = (1/csr(1))*matrix([[0.2*i,0],[0,0.1]])
 ###########################################################
 #  the b vector expressed in terms of the eigenvectors of A
 b = (1/csr(2))*array([[1],[1]])

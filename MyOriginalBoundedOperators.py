@@ -43,7 +43,7 @@ def M_ops(N,j,i):
 
 
 """
-    Normaization condition
+    Normalization condition
 """ 
 def Mcomplete(N):
     p = []
@@ -76,7 +76,7 @@ def SingleIteration(i):
         s+=M_ops(N,j,j+1)*l[i-1]*M_ops(N,j,j+1).dag() + M_ops(N,j,j-1)*l[i-1]*M_ops(N,j,j-1).dag()
     return s
 
-def MultipleIterations(N,n): # n represents number of iterations to be considered
+def MultipleIterations(n): # n represents number of iterations to be considered
     for i in range(1,n):
         a = SingleIteration(i)
         l.append(a)
@@ -89,7 +89,7 @@ def MultipleIterations(N,n): # n represents number of iterations to be considere
 
 """    
 def Prb(N,iterations,Itermatrix,site):  
-    return (MultipleIterations(N,iterations)[Itermatrix].ptrace(1)*Projection(N,site)).tr()
+    return (MultipleIterations(iterations)[Itermatrix].ptrace(1)*Projection(N,site)).tr()
 
 n = 6
 Iterations = n + 1   
@@ -109,9 +109,9 @@ def draw():
     pl.ylabel("Probability")
     pl.xlabel("vertex number")
     pl.grid()
-    pl.plot(x,y,'*')
+    pl.plot(x,y,'r')
     pl.show()
     print sum(y)
 
 draw()
-print Prb(N,Iterations,Itermatrix,4)
+print Prb(N,Iterations,Itermatrix,N-1)
