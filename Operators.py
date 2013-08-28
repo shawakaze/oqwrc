@@ -1,14 +1,9 @@
-from qutip import *
-from HilbertSpace import *
-from cmath import sqrt
-from Kspace import Kspace
 
-i = sqrt(-1)
-H = Hadamardgate()
+from HilbertSpace import *
+from constants import *
+
+H = Hgate()
 I = I()
-I3 = qeye(2)
-v0 = basis(2,0)
-v1 = basis(2,1)
 K=Kspace(9)
 
 def R(t):
@@ -17,15 +12,15 @@ def R(t):
 def Bounds(A,t):
     U = Ugate(A,2)
     U = Qobj(U)
-    B11 = tensor(I,I,I3)
-    B12 = tensor(I,H,I3)
-    B23 = tensor(I,v0*v0.dag(),I3)+ tensor(I,v1*v1.dag(),U)
+    B11 = tensor(I,I,I)
+    B12 = tensor(I,H,I)
+    B23 = tensor(I,v0*v0.dag(),I)+ tensor(I,v1*v1.dag(),U)
     B34 = B12
-    B45 = tensor(I,v0*v0.dag(),I3)+tensor(R(t),v1*v1.dag(),I3)
+    B45 = tensor(I,v0*v0.dag(),I)+tensor(R(t),v1*v1.dag(),I)
     B56 = B12
     B67 = B23.dag()
     B78 = B12
-    B89 = tensor(v1*v1.dag(),I,I3)
+    B89 = tensor(v1*v1.dag(),I,I)
     B99 = B11
     return [B11,B12,B23,B34,B45,B56,B67,B78,B89,B99]
 
@@ -75,7 +70,4 @@ def PureReverse(A,t):
         L.append(tensor(rp[i],K[i-1]*K[i].dag()))
     return L 
 
-def Projection(N,i):
-    a = tensor(I,I,I3,Kspace(N)[i]*Kspace(N)[i].dag())
-    return a
-           
+ 

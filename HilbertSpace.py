@@ -1,12 +1,25 @@
-from qutip import *
-from scipy.linalg import expm2
-from cmath import sqrt
-import numpy as np
+from sys_libs import *
+from constants import *
 
-i = sqrt(-1)
+"""
+    K-space or Hilbert space of graph
+"""
 
-def Hadamardgate():
-    return (1/sqrt(2))*Qobj(np.matrix([[1,1],[1,-1]]))
+def Kspace(N):
+    L = []
+    for i in range(N):
+        L.append(basis(N,i))
+    return L
+"""
+    K-space transition operators
+"""
+def D(K,j,i): 
+    d = K[i]*K[j].dag()
+    return d
+
+
+def Hgate():
+    return (1/sqrt(2))*Qobj(matrix([[1,1],[1,-1]]))
 """
     The next gate is not unitary
 """
@@ -24,3 +37,32 @@ def Z(n):
     a.shape = (n,n)
     a = np.matrix(a)
     return Qobj(a)
+
+def CPTPmap(A,B,p):
+    a = A*p*A.dag() + B*p*B.dag()
+    return a
+
+def NormalizationCondition(A,B):
+    return A.dag()*A + B.dag()*B
+
+def AntiCommutator(A,B):
+    return A*B+B*A
+
+def Probabilityfn(A):
+    a = ptrace(A,[0,1,2])
+    return a.tr()
+
+def TraceDistance(A,B):
+    a = A - B
+    b = a.dag()*a
+    b = b.sqrtm()
+    return 0.5*b.tr()
+
+def Expectation(M,p):
+    c = (M*p).tr()
+    return c
+
+def Projection(N,i):
+    a = tensor(I,I,I,Kspace(N)[i]*Kspace(N)[i].dag())
+    return a
+          

@@ -1,13 +1,8 @@
-from scipy.linalg import * 
-from scipy import matrix,transpose,array
-from qutip import *
-import cmath
-import scipy as sp
+from sys_libs import *
 
 
-pi = sp.pi
 def csr(a):
-    return cmath.sqrt(a)
+    return sqrt(a)
 
 def thetafn(A):
     B = Qobj(A)
@@ -15,9 +10,9 @@ def thetafn(A):
     b1 = max(B.eigenenergies())
     if b0 != 0 and b1 != 0:
         if abs(b0) < abs(b1):
-            return -2*sp.arccos(b0/b1)
+            return -2*arccos(b0/b1)
         else:
-            return -2*sp.arccos(b1/b0)
+            return -2*arccos(b1/b0)
     else:
         return 2*pi
 
