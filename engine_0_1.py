@@ -14,7 +14,7 @@ P9 = Projection(9,8)
     Input matrix
 """
 
-A = (1/csr(1))*matrix([[0.02,0.01],[-0.02,0.01]])
+A = (1/csr(6))*matrix([[0.02,0.01],[-0.02,0.01]])
 
 """
     The b vector expressed in terms of the eigenvectors of A
@@ -97,7 +97,7 @@ def draw():
     #pl.savefig("fidelity_plot.png") give what ever name you want
 
     pl.show()
-###############################################################################
+
 draw()
 #print main(0.8)
                   

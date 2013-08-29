@@ -1,5 +1,8 @@
 import qutip,numpy as np,random,pylab as pl
-from Kspace import *
+from sys_libs import *
+from HilbertSpace import *
+from constants import *
+
 
 """
     (0) N is the number of vertices on \mathbb{Z}
