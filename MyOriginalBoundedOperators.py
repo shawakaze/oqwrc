@@ -1,4 +1,3 @@
-import qutip,numpy as np,random,pylab as pl
 from sys_libs import *
 from HilbertSpace import *
 from constants import *
@@ -12,7 +11,7 @@ from constants import *
 
 """
 # the number of vertices
-N = 15
+N = 10
 
 # (2) The Local bounded operators a walk on Z
 def B_ops(N,j,i):
