@@ -11,6 +11,7 @@ from scipy.linalg import *
 
 import pylab as pl
 import numpy as np
+import random
 
 from matplotlib import rc
 rc('text', usetex=True)

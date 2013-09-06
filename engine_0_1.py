@@ -31,7 +31,7 @@ theta = thetafn(A)
 real_solution = DM(A,b)
 
 """
-    Inital density matrix
+    Initial density matrix
 """
 g = Qobj(b)
 g = g.unit()

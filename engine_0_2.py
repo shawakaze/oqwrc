@@ -20,8 +20,8 @@ class main_app:
     def test_solvable(self):
         try: 
             solve(self.A,self.b)
-        except ValueError:
-            print "Your system has no solution"
-            sys.exit(1)
+            print "Your system has a solution"
+            return True
+        except:
+            print "Warning!!\tWarning!!\nYour system has no solution\nProgram exiting."
             
-    
