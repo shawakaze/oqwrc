@@ -11,7 +11,7 @@ from constants import *
 
 """
 # the number of vertices
-N = 10
+N = 20
 
 # (2) The Local bounded operators a walk on Z
 def B_ops(N,j,i):
@@ -93,7 +93,7 @@ def MultipleIterations(n): # n represents number of iterations to be considered
 def Prb(N,iterations,Itermatrix,site):  
     return (MultipleIterations(iterations)[Itermatrix].ptrace(1)*Projection(N,site)).tr()
 
-n = 6
+n = 20
 Iterations = n + 1   
 Itermatrix = n
 

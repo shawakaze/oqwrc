@@ -6,11 +6,11 @@ from qutip import *
 """
     The scipy and matplotlib modules with latex support
 """
+
 from scipy import *
 from scipy.linalg import *
 
 import pylab as pl
-import numpy as np
 import random
 
 from matplotlib import rc
