@@ -2,11 +2,7 @@
 """
     Developer modules
 """
-from HilbertSpace import *
-from Operators import *
-
-from solver import *
-from constants import *
+from src import *
 
 P9 = Projection(9,8)
 
