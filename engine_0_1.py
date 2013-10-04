@@ -4,13 +4,7 @@
 """
 
 from src import *
-
-from HilbertSpace import *
-from Operators import *
-
-from solver import *
-from constants import *
-
+from doc import *
 
 P9 = Projection(9,8)
 
@@ -101,7 +95,7 @@ def draw():
     #pl.savefig("fidelity_plot.png") give what ever name you want
 
     pl.show()
-
-draw()
-#print main(0.8)
+#welcome()
+#draw()
+print main(0.8)
                   
