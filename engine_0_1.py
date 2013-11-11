@@ -12,7 +12,7 @@ P9 = Projection(9,8)
     Input matrix
 """
 
-A = (1/csr(6))*matrix([[0.02,0.01],[-0.02,0.01]])
+A = matrix([[1,0],[0,1]])
 
 """
     The b vector expressed in terms of the eigenvectors of A
@@ -37,7 +37,7 @@ g = g.unit()
 p0 = tensor(v1*v1.dag(),v0*v0.dag(),g*g.dag(),K[0]*K[0].dag())
 
 
-def main(w):
+def solution_generator(w):
     l = 1-w
     exit_status = False
     P = [p0]
@@ -65,37 +65,37 @@ def draw():
     x,y,z=[],[],[]
     delta = 0.1
     for w in arange(0.5,1,delta):
-          p = main(w)
+          p = solution_generator(w)
           solution = p[0]
           l = p[1]
           x.append(w)
           y.append(Probabilityfn(l))
           z.append(fidelity(solution,real_solution))
 
-    pl.figure(1)
-    pl.title(r"Probability of detection vs $\omega$")
-    pl.ylabel(r"Probability of detection at node 9, $p_9$")
-    pl.xlabel(r"$\omega$ - forward propagation amplitude")
-    pl.xlim(0.5,1)
-    pl.ylim(0,1.4)
+    figure(1)
+    title(r"Probability of detection vs $\omega$")
+    ylabel(r"Probability of detection at node 9, $p_9$")
+    xlabel(r"$\omega$ - forward propagation amplitude")
+    xlim(0.5,1)
+    ylim(0,1.4)
 
-    plot1, = pl.plot(x,y,'r')
-    pl.legend([plot1],['Probability of detection at node 9'],'upper left')
+    plot1, = plot(x,y,'r')
+    legend([plot1],['Probability of detection at node 9'],'upper left')
     #pl.savefig("Probability_of_detection.png") give the file whatever name you want
 #-------------------------------------------------------------------------------
-    pl.figure(2)
-    pl.title(r"Fidelity (actual,oqw) vs $\omega$")
-    pl.ylabel(r"Fidelity,$\mathcal{F}(actual-dm,oqw-dm)$")
-    pl.xlabel(r"$\omega$ - forward propagation amplitude")
-    pl.xlim(0.5,1)
-    pl.ylim(0,1.2)
+    figure(2)
+    title(r"Fidelity (actual,oqw) vs $\omega$")
+    ylabel(r"Fidelity,$\mathcal{F}(actual-dm,oqw-dm)$")
+    xlabel(r"$\omega$ - forward propagation amplitude")
+    xlim(0.5,1)
+    ylim(0,1.2)
     
-    plot2, = pl.plot(x,z,'b')
-    pl.legend([plot2],['fidelity between the two solns'],'upper left')
+    plot2, = plot(x,z,'b')
+    legend([plot2],['fidelity between the two solns'],'upper left')
     #pl.savefig("fidelity_plot.png") give what ever name you want
 
-    pl.show()
+    show()
 #welcome()
 #draw()
-print main(0.8)
+print solution_generator(0.8)
                   

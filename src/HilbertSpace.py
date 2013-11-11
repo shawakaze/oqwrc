@@ -5,7 +5,7 @@ from sys_libs import *
 """
     K-space or Hilbert space of graph
 """
-
+pi = np.pi
 def Kspace(N):
     L = []
     for i in range(N):
@@ -25,10 +25,10 @@ def Hgate():
     The next gate is not unitary
 """
 def R(G,t):
-    return cos(t/2.)*I - i*sin(t/2)*G
+    return cos(t/2.)*I - i*sin(t/2.)*G
 
 def Ugate(A,N):
-    return Qobj(expm2(2*np.pi*i*N*A))
+    return Qobj(expm(2*pi*i*N*A))
 
 def I():
     return qeye(2)

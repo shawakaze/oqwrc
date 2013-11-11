@@ -1,5 +1,6 @@
 
 from src import *
+from doc import *
 
 class main_app:
     
@@ -17,4 +18,6 @@ class main_app:
             return True
         except:
             print "Warning!!\tWarning!!\nYour system has no solution\nProgram exiting."
+            return False
+        
             

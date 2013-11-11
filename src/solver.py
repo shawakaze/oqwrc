@@ -5,9 +5,9 @@ def csr(a):
     return sqrt(a)
 
 def thetafn(A):
-    B = Qobj(A)
-    b0 = min(B.eigenenergies())
-    b1 = max(B.eigenenergies())
+    A = Qobj(A)
+    b0 = min(A.eigenenergies())
+    b1 = max(A.eigenenergies())
     if b0 != 0 and b1 != 0:
         if abs(b0) < abs(b1):
             return -2*arccos(b0/b1)
