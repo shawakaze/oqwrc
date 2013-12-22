@@ -12,12 +12,12 @@ P9 = Projection(9,8)
     Input matrix
 """
 
-A = matrix([[1,0],[0,1]])
+A = matrix([[1.05,1],[1,-0.2*i]])
 
 """
     The b vector expressed in terms of the eigenvectors of A
 """
-b = (1/csr(2))*array([[1],[1]])
+b = (1/csr(2))*array([[1],[-1]])
 
 """
     Determination of rotation angle
@@ -96,6 +96,6 @@ def draw():
 
     show()
 #welcome()
-#draw()
-print solution_generator(0.8)
+draw()
+#print solution_generator(0.8)
                   

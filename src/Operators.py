@@ -10,7 +10,7 @@ def R(t):
     return cos(t/2.)*I - i*sin(t/2)*sigmay()
 
 def Bounds(A,t):
-    U = Ugate(A,2)
+    U = Ugate(A)
     U = Qobj(U)
     B11 = tensor(I,I,I)
     B12 = tensor(I,H,I)

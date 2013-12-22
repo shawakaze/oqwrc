@@ -1,8 +1,7 @@
 from qutip import *
-from scipy import *
+from scipy import matrix
 from random import *
 from numpy import *
-from scipy.linalg import expm
 from cmath import sqrt
 
 import os,sys,gtk

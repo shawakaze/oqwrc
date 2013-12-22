@@ -1,11 +1,12 @@
 
 from constants import *
 from sys_libs import *
+from scipy.sparse.linalg import expm
 
 """
     K-space or Hilbert space of graph
 """
-pi = np.pi
+
 def Kspace(N):
     L = []
     for i in range(N):
@@ -27,9 +28,11 @@ def Hgate():
 def R(G,t):
     return cos(t/2.)*I - i*sin(t/2.)*G
 
-def Ugate(A,N):
-    return Qobj(expm(2*pi*i*N*A))
-
+def Ugate(A):
+    #return Qobj(expm(sqrt(-1)*A)) # temporal solution, replace 2*pi*i with i
+    return eye(2) + 2*pi*i*A #- 2*pi**2*A*A
+    
+    
 def I():
     return qeye(2)
 
